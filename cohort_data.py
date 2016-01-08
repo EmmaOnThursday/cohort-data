@@ -67,7 +67,7 @@ def sort_by_cohort(filename):
     spring_15.sort()
     summer_15.sort()
     tas.sort()
-    
+
     cohort_data.close()
 
     return all_students
@@ -103,7 +103,51 @@ def students_by_house(filename):
     tas = []
     instructors = []
 
+    all_students = [gryffindor, 
+                    hufflepuff, 
+                    slytherin, 
+                    dumbledores_army, 
+                    order_of_the_phoenix,
+                    ravenclaw,
+                    tas,
+                    instructors]
+
     # Code goes here
+
+    cohort_data = open(filename)
+
+    for item in cohort_data:
+        new_item = item.rstrip()
+        each_person = new_item.split('|')
+
+        if each_person[-1] == "TA":
+            tas.append(each_person[1])
+        elif each_person[-1] == "I":
+            instructors.append(each_person[1])
+        else:
+            if each_person[2] == "Gryffindor":
+                gryffindor.append(each_person[1])
+            elif each_person[2] == "Hufflepuff":
+                hufflepuff.append(each_person[1])
+            elif each_person[2] == "Slytherin":
+                slytherin.append(each_person[1])
+            elif each_person[2] == "Dumbledore's Army":
+                dumbledores_army.append(each_person[1])
+            elif each_person[2] == "Order of the Phoenix":
+                order_of_the_phoenix.append(each_person[1])
+            elif each_person[2] == "Ravenclaw":
+                ravenclaw.append(each_person[1])
+
+    gryffindor.sort()
+    hufflepuff.sort()
+    slytherin.sort()
+    dumbledores_army.sort()
+    order_of_the_phoenix.sort()
+    ravenclaw.sort()
+    tas.sort()
+    instructors.sort()
+
+    cohort_data.close()
 
     return all_students
 
@@ -179,8 +223,8 @@ def find_house_members_by_student_name(student_list):
 # Here is some useful code to run these functions!
 
 # print unique_houses("cohort_data.txt")
-print sort_by_cohort("cohort_data.txt")
-# print students_by_house("cohort_data.txt")
+# print sort_by_cohort("cohort_data.txt")
+print students_by_house("cohort_data.txt")
 # all_students_data = all_students_tuple_list("cohort_data.txt")
 # print all_students_data
 # find_cohort_by_student_name(all_students_data)
