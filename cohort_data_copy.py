@@ -98,7 +98,7 @@ def students_by_house():
             ]
     """
 
-    all_students = []
+    #all_students = []
     gryffindor = []
     hufflepuff = []
     slytherin = []
